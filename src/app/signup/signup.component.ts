@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogerrorComponent } from '../dialogerror/dialogerror.component';
 import { Router } from '@angular/router';
-import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-signup',
@@ -34,7 +33,6 @@ export class SignupComponent implements OnInit {
   //Triggered when the user hits the register button
   submitForm(value: any):void {
     this.http.post(this.url, this.registerUserForm.value, {observe: 'response'})
-      .map(response => response)
       .subscribe( 
         response => {
           this.router.navigateByUrl('home');

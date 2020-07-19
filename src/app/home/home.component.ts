@@ -4,7 +4,6 @@ import { HttpClient} from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { LoginerrorComponent } from '../loginerror/loginerror.component';
-import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +28,6 @@ export class HomeComponent implements OnInit {
   //Triggered when the user hits the login button
   submitForm(value: any):void {
     this.http.post(this.url, this.authUserForm.value, {observe: 'response'})
-      .map(response => response)
       .subscribe( 
         response => {
           // Redirect to User Dashboard

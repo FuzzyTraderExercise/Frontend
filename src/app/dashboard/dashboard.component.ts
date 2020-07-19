@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
     headers = headers.set('Authorization', jwt_token);
 
     this.http.get(this.url + 'get-userinvestment', {params: params, headers: headers, observe: 'response'})
-      .map(response => response)
       .subscribe(
         response => {
           this.user_investments = response.body['user_stocks']
@@ -57,7 +56,6 @@ export class DashboardComponent implements OnInit {
     headers = headers.set('Authorization', jwt_token);
 
     this.http.get(this.url + 'get-investments', {params: params, headers: headers, observe: 'response'})
-      .map(response => response)
       .subscribe(
         response => {
           this.buy_investments = response.body['stocks']
@@ -81,7 +79,6 @@ export class DashboardComponent implements OnInit {
     }
 
     this.http.post(this.url + '/register-investment', payload,{headers: headers,observe: 'response'})
-      .map(response => response)
       .subscribe( 
         response => {
           // Reload to User Dashboard
