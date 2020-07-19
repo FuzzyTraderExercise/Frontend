@@ -241,16 +241,6 @@ html {
     transition: width 0.2s;
   }
   
-  .forgotPassword {
-    position: relative;
-    right: 50px;
-  }
-
-  .signup {
-      position: relative;
-      left: 50px;
-  }
-
   .underlineHover:hover {
     color: #0d0d0d;
   }
@@ -258,3 +248,16 @@ html {
   .underlineHover:hover:after{
     width: 100%;
   }
+  
+  
+  
+  /* OTHERS */
+  
+  *:focus {
+      outline: none;
+  } 
+  
+  #icon {
+    width:60%;
+  }
+  
