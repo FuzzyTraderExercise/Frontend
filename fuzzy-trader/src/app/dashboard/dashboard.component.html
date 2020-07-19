@@ -1,3 +1,4 @@
+<!--Side menu-->
 <div id="mySidenav" class="sidenav">
     <h2>Your Wallet: {{user_wallet}}$</h2>
     <h2>Your Investments</h2>
@@ -11,20 +12,34 @@
     <a href="#">Logout</a>
 </div>
 
-<!-- Show Investments available for purchase based on an usd value
+
 <div class="content">
+    <!-- Investment Searcher-->
+    <div class=row>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    How much are you willing to spend?
+                </div>
+                <div class="panel-body">
+                    <input placeholder="Usd_value" type="number" class="usd_value" [(ngModel)]="usd_value">
+                    <button class="pull-right btn btn-success" (click)="getInvestments()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <h2 class="text-center"><b>Buy Investments</b></h2>
     <br>
     <h4 class="text-center" *ngIf="user_investments.length === 0">You don't have any investment</h4>
-    <div class="col-sm-2" *ngFor="let investment of user_investments">
+    <div class="col-sm-3" *ngFor="let investment of buy_investments">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">{{ investment.name }}</h3>
             </div>
             <div class="panel-body">
-                Price - {{ investment.price }}$
+                Price - {{ investment.usd_value }}$
                 <a class="pull-right btn btn-success">Buy</a>
             </div>
         </div>
     </div>
-</div> -->
+</div>
