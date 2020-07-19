@@ -38,7 +38,7 @@
             </div>
             <div class="panel-body">
                 Price - {{ investment.usd_value }}$
-                <a class="pull-right btn btn-success">Buy</a>
+                <button class="pull-right btn btn-success" (click)="buyInvestment(investment.name)">Buy</button>
             </div>
         </div>
     </div>

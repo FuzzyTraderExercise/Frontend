@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
           this.user_investments = response.body['user_stocks']
 
           for(let investment of this.user_investments) {
-            this.user_wallet = investment.usd_value
+            this.user_wallet += investment.usd_value
           }
         },
         error => {}
@@ -49,7 +49,6 @@ export class DashboardComponent implements OnInit {
       // Error treatment
     }
 
-    console.log('hmmm');
     params = params.set('usd_value', this.usd_value.toString());
     headers = headers.set('Authorization', jwt_token);
 
@@ -58,11 +57,35 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         response => {
           this.buy_investments = response.body['stocks']
-          console.log(this.buy_investments)
         },
         error => {
           // Error treatment
         }
+      );
+  }
+
+  // Buy Investment
+  buyInvestment(stock_name: string) {
+    let headers = new HttpHeaders;
+    let jwt_token = 'Bearer ' + sessionStorage.getItem('JWT_Token');
+    headers = headers.set('Authorization', jwt_token);
+    
+    let payload = {
+      'email': sessionStorage.getItem('email'),
+      'stock_name': stock_name
+    }
+
+    this.http.post(this.url + '/register-investment', payload,{headers: headers,observe: 'response'})
+      .map(response => response)
+      .subscribe( 
+        response => {
+          // Reload to User Dashboard
+          window.location.reload();
+        },
+        error => {
+          // Error Treatment
+        }
+
       );
   }
 
