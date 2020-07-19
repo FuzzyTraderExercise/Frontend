@@ -1,1 +1,30 @@
-<p>dashboard works!</p>
+<div id="mySidenav" class="sidenav">
+    <h2>Your Wallet: {{user_wallet}}$</h2>
+    <h2>Your Investments</h2>
+    <div *ngIf="user_investments.length === 0">
+        You don't have any investments
+    </div>
+    <div *ngFor="let investment of user_investments">
+        {{investment.stock_name}} - {{investment.usd_value}}$
+    </div>
+    <br><br><br><br><br><br><br><br>
+    <a href="#">Logout</a>
+</div>
+
+<!-- Show Investments available for purchase based on an usd value
+<div class="content">
+    <h2 class="text-center"><b>Buy Investments</b></h2>
+    <br>
+    <h4 class="text-center" *ngIf="user_investments.length === 0">You don't have any investment</h4>
+    <div class="col-sm-2" *ngFor="let investment of user_investments">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ investment.name }}</h3>
+            </div>
+            <div class="panel-body">
+                Price - {{ investment.price }}$
+                <a class="pull-right btn btn-success">Buy</a>
+            </div>
+        </div>
+    </div>
+</div> -->
