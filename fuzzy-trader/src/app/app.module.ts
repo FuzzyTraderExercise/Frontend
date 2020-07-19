@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DialogerrorComponent } from './dialogerror/dialogerror.component';
 import { LoginerrorComponent } from './loginerror/loginerror.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoginerrorComponent } from './loginerror/loginerror.component';
     SignupComponent,
     DialogerrorComponent,
     LoginerrorComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

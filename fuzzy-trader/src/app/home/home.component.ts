@@ -33,6 +33,9 @@ export class HomeComponent implements OnInit {
       .subscribe( 
         response => {
           // Redirect to User Dashboard
+          sessionStorage.setItem('JWT_Token',response.body['JWT_Token']);
+          sessionStorage.setItem('email', this.authUserForm.value.email);
+          this.router.navigateByUrl('dashboard');
         },
         error => {
           this.modal.open(LoginerrorComponent);
