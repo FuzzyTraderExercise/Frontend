@@ -8,7 +8,6 @@
     <!-- Tabs Titles -->
 
     <br>
-    <!-- Icon -->
     <div class="fadeIn first">
       <h4>Welcome to Fuzzy Trader</h4>
       <p>Your Market Stocks and Bitcoin manager</p>
@@ -16,13 +15,12 @@
     <br><br>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="E-mail">
-      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
+    <form [formGroup]="authUserForm" (ngSubmit)="submitForm(authUserForm.value)">
+      <input type="text" [formControl]="authUserForm.controls['email']" id="login" class="fadeIn second" name="login" placeholder="E-mail">
+      <input type="password" [formControl]="authUserForm.controls['password']" id="password" class="fadeIn third" name="login" placeholder="Password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 
-    <!-- Remind Passowrd -->
     <div id="formFooter">
       <a class="underlineHover" href="#" routerLink='../signup'>Sign up</a>
     </div>

@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient} from '@angular/common/http';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { LoginerrorComponent } from '../loginerror/loginerror.component';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +12,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  authUserForm: FormGroup;
+  url = 'https://calm-hamlet-01595.herokuapp.com/login';
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient,
+    private modal: NgbModal, private router: Router) {
+      this.authUserForm = formBuilder.group({
+        'email': [null, Validators.required],
+        'password': [null, Validators.required]
+      });
+     }
 
   ngOnInit(): void {
+  }
+
+  //Triggered when the user hits the login button
+  submitForm(value: any):void {
+    this.http.post(this.url, this.authUserForm.value, {observe: 'response'})
+      .map(response => response)
+      .subscribe( 
+        response => {
+          // Redirect to User Dashboard
+        },
+        error => {
+          this.modal.open(LoginerrorComponent);
+        }
+
+      );
   }
 
 }

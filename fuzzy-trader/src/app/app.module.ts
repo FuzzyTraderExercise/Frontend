@@ -10,6 +10,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DialogerrorComponent } from './dialogerror/dialogerror.component';
+import { LoginerrorComponent } from './loginerror/loginerror.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DialogerrorComponent } from './dialogerror/dialogerror.component';
     HomeComponent,
     SignupComponent,
     DialogerrorComponent,
+    LoginerrorComponent,
   ],
   imports: [
     BrowserModule,
