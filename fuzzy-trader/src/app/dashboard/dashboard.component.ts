@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ export class DashboardComponent implements OnInit {
   usd_value = 0;
   url = 'https://calm-hamlet-01595.herokuapp.com/'
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient, private router: Router) { }
 
   // Get User Investments as soon as page loads
   ngOnInit(): void {
@@ -34,7 +35,10 @@ export class DashboardComponent implements OnInit {
             this.user_wallet += investment.usd_value
           }
         },
-        error => {}
+        error => {
+          // Token probably expired
+          this.router.navigateByUrl('home');
+        }
       );
   }
 
@@ -59,7 +63,8 @@ export class DashboardComponent implements OnInit {
           this.buy_investments = response.body['stocks']
         },
         error => {
-          // Error treatment
+          // Token probably expired
+          this.router.navigateByUrl('home');
         }
       );
   }
@@ -83,7 +88,8 @@ export class DashboardComponent implements OnInit {
           window.location.reload();
         },
         error => {
-          // Error Treatment
+          // Token probably expired
+          this.router.navigateByUrl('home');
         }
 
       );
